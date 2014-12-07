@@ -53,10 +53,11 @@
       function createPicker() {
         if (pickerApiLoaded && oauthToken) {
 	    var uploadView = new google.picker.DocsUploadView();
-        uploadView.setIncludeFolders(true);
+        //uploadView.setIncludeFolders(true);
+        uploadView.setParent("0BwTG-zpMWg0QTHVVZzNGNlJXblk");
         
           var picker = new google.picker.PickerBuilder().
-              enableFeature(google.picker.Feature.MULTISELECT_ENABLED).
+              enableFeature(google.picker.Feature.SIMPLE_UPLOAD_ENABLED).
  //            enableFeature(google.picker.Feature.NAV_HIDDEN). 
               addView(uploadView).
               hideTitleBar().
