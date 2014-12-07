@@ -5,6 +5,8 @@
     <title>Google Picker Example</title>
 
     <script type="text/javascript">
+		  
+      var DIALOG_DIMENSIONS = {width: 600, height: 425};
 
       // The Browser API key obtained from the Google Developers Console.
       var developerKey = 'AIzaSyABNtobsbcIbnhtLdgQW8wBaiU_CdhK394';
@@ -49,15 +51,24 @@
       // Create and render a Picker object for picking user Photos.
       function createPicker() {
         if (pickerApiLoaded && oauthToken) {
+	    var uploadView = new google.picker.DocsUploadView();
+        uploadView.setIncludeFolders(true);
+        
           var picker = new google.picker.PickerBuilder().
-              addView(google.picker.ViewId.PHOTOS).
+              enableFeature(google.picker.Feature.SIMPLE_UPLOAD_ENABLED).
+ //            enableFeature(google.picker.Feature.NAV_HIDDEN). 
+              addView(uploadView)
               setOAuthToken(oauthToken).
               setDeveloperKey(developerKey).
               setCallback(pickerCallback).
+              setSize(DIALOG_DIMENSIONS.width - 2, DIALOG_DIMENSIONS.height - 2).
               build();
+              
           picker.setVisible(true);
-        }
-      }
+        } else {
+      showError('Unable to load the file picker.');
+       }
+     }
 
       // A simple callback implementation.
       function pickerCallback(data) {
@@ -69,6 +80,10 @@
         var message = 'You picked: ' + url;
         document.getElementById('result').innerHTML = message;
       }
+      
+       function showError(message) {
+          document.getElementById('result').innerHTML = 'Error: ' + message;
+        }
     </script>
   </head>
   <body>
