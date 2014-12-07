@@ -6,7 +6,7 @@
 
     <script type="text/javascript">
 		  
-   //   var DIALOG_DIMENSIONS = {width: 600, height: 425};
+     var DIALOG_DIMENSIONS = {width: 600, height: 425};
 
       // The Browser API key obtained from the Google Developers Console.
       var developerKey = 'AIzaSyABNtobsbcIbnhtLdgQW8wBaiU_CdhK394';
@@ -62,7 +62,7 @@
               setOAuthToken(oauthToken).
               setDeveloperKey(developerKey).
               setCallback(pickerCallback).
-//              setSize(DIALOG_DIMENSIONS.width - 2, DIALOG_DIMENSIONS.height - 2).
+              setSize(DIALOG_DIMENSIONS.width - 2, DIALOG_DIMENSIONS.height - 2).
               build();
               
           picker.setVisible(true);
