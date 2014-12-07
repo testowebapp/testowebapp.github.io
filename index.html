@@ -52,9 +52,10 @@
       // Create and render a Picker object for picking user Photos.
       function createPicker() {
         if (pickerApiLoaded && oauthToken) {
-	    var uploadView = new google.picker.DocsUploadView();
+	    var uploadView = new google.picker.DocsUploadView().setParent("TESTUPLOAD");
         //uploadView.setIncludeFolders(true);
-        uploadView.setParent("0BwTG-zpMWg0QTHVVZzNGNlJXblk");
+        //uploadView.setParent("0BwTG-zpMWg0QTHVVZzNGNlJXblk");
+        //uploadView.setParent("");
         
           var picker = new google.picker.PickerBuilder().
               enableFeature(google.picker.Feature.SIMPLE_UPLOAD_ENABLED).
