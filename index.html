@@ -3,7 +3,7 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <title>Google Picker </title>
-
+    <script type="text/javascript" src="https://apis.google.com/js/api.js?onload=onApiLoad"></script> 
     <script type="text/javascript">
 		  
      var DIALOG_DIMENSIONS = {width: 600, height: 525};
@@ -65,7 +65,7 @@
               setOAuthToken(oauthToken).
               setDeveloperKey(developerKey).
               setCallback(pickerCallback).
-              setSize(DIALOG_DIMENSIONS.width - 20, DIALOG_DIMENSIONS.height - 20).
+              setSize(DIALOG_DIMENSIONS.width - 2, DIALOG_DIMENSIONS.height - 2).
               build();
               
           picker.setVisible(true);
@@ -93,17 +93,17 @@
   </head>
   <body>
 	  <div>
- <!-- <form id="myForm">
+ <form id="myForm">
   <input type="button" value="Upload File"
-      onclick="https://apis.google.com/js/api.js?onload=onApiLoad" />
+      onclick="onApiLoad();" />
       
-</form> -->
+</form>
   <p id='result'></p>
 </div>
 
     <div id="result"></div>
 
     <!-- The Google API Loader script. -->
- <script type="text/javascript" src="https://apis.google.com/js/api.js?onload=onApiLoad"></script> 
+ 
   </body>
 </html>
