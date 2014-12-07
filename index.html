@@ -53,7 +53,7 @@
       function createPicker() {
         if (pickerApiLoaded && oauthToken) {
 	    var uploadView = new google.picker.DocsUploadView();
-        uploadView.setSelectFolderEnabled(true);
+        uploadView.setIncludeFolders(true);
         
           var picker = new google.picker.PickerBuilder().
               enableFeature(google.picker.Feature.SIMPLE_UPLOAD_ENABLED).
