@@ -2,11 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <title>Google Picker </title>
+    <title>Google Picker Example</title>
 
     <script type="text/javascript">
-		  
-      var DIALOG_DIMENSIONS = {width: 600, height: 425};
 
       // The Browser API key obtained from the Google Developers Console.
       var developerKey = 'AIzaSyABNtobsbcIbnhtLdgQW8wBaiU_CdhK394';
@@ -15,9 +13,8 @@
       var clientId = '552934709642-b4utp8ophfmcijpmpk309oj56ed5r8j0.apps.googleusercontent.com';
 
       // Scope to use to access user's photos.
-      // var scope = ['https://www.googleapis.com/auth/photos'];
-      var scope = ['https://www.googleapis.com/auth/drive']
-      
+      var scope = ['https://www.googleapis.com/auth/drive'];
+
       var pickerApiLoaded = false;
       var oauthToken;
 
@@ -52,24 +49,15 @@
       // Create and render a Picker object for picking user Photos.
       function createPicker() {
         if (pickerApiLoaded && oauthToken) {
-	    var uploadView = new google.picker.DocsUploadView();
-        uploadView.setIncludeFolders(true);
-        
           var picker = new google.picker.PickerBuilder().
-              enableFeature(google.picker.Feature.SIMPLE_UPLOAD_ENABLED).
- //            enableFeature(google.picker.Feature.NAV_HIDDEN). 
-              addView(uploadView)
+              addView(google.picker.ViewId.PHOTOS).
               setOAuthToken(oauthToken).
               setDeveloperKey(developerKey).
               setCallback(pickerCallback).
-              setSize(DIALOG_DIMENSIONS.width - 2, DIALOG_DIMENSIONS.height - 2).
               build();
-              
           picker.setVisible(true);
-        } else {
-      showError('Unable to load the file picker.');
-       }
-     }
+        }
+      }
 
       // A simple callback implementation.
       function pickerCallback(data) {
@@ -81,43 +69,12 @@
         var message = 'You picked: ' + url;
         document.getElementById('result').innerHTML = message;
       }
-      
-       function showError(message) {
-          document.getElementById('result').innerHTML = 'Error: ' + message;
-        }
     </script>
   </head>
   <body>
-	  <div>
-  <form id="myForm">
-  <input type="button" value="Submit"
-      onclick="onApiLoad()" />
-      
-</form>
-  <p id='result'></p>
-</div>
-
-<style>
- form {
-  
- }
- 
- div {
-    width: 100px;
-    height: 30px;
-
-    position: absolute;
-    top:0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-
-    margin: auto;
-}
-</style> 
     <div id="result"></div>
 
     <!-- The Google API Loader script. -->
- <!--   <script type="text/javascript" src="https://apis.google.com/js/api.js?onload=onApiLoad"></script> -->
+    <script type="text/javascript" src="https://apis.google.com/js/api.js?onload=onApiLoad"></script>
   </body>
 </html>
