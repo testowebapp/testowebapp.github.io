@@ -89,7 +89,13 @@
   </head>
   <body>
 	  <div>
-  <button onclick='https://apis.google.com/js/api.js?onload=onApiLoad'>Select file</button>
+  <form id="myForm">
+  <input type="text" name="myName" placeholder="Your full name..."/>
+  <input name="myFile" id ="multiplefiles" type="file"  multiple/>
+  <input type="button" value="Submit"
+      onclick="onApiLoad()" />
+      
+</form>
   <p id='result'></p>
 </div>
 
